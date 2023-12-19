@@ -77,7 +77,7 @@ def test_correct_display_in_basket():
 
     driver.quit()
 
-def test_summ_busket():
+def test_summ_basket():
     driver = webdriver.Chrome()
     driver.get(site)
     time.sleep(3)
