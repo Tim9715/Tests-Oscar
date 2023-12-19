@@ -90,10 +90,8 @@ def test_summ_busket():
 
     price1 = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/section/div/ol/li[1]/article/div[2]/p[1]').text
     price2 = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/section/div/ol/li[2]/article/div[2]/p[1]').text
-
     price1 = float(re.findall("\d+\.\d+", f'{price1}'.replace(',', '.'))[0])
     price2 = float(re.findall("\d+\.\d+", f'{price2}'.replace(',', '.'))[0])
-
     summ = str(price1 + price2).replace('.', ',')
 
     driver.get(basket)
@@ -142,17 +140,16 @@ def test_logo_basket():
 
     price1 = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/section/div/ol/li[1]/article/div[2]/p[1]').text
     price2 = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/section/div/ol/li[2]/article/div[2]/p[1]').text
+    price1 = float(re.findall("\d+\.\d+", f'{price1}'.replace(',', '.'))[0])
+    price2 = float(re.findall("\d+\.\d+", f'{price2}'.replace(',', '.'))[0])
+    summ = str(price1 + price2).replace('.', ',')
+    
     button_logo = driver.find_element(By.XPATH, '/html/body/header/div[1]/div/div[1]/a').click()
     time.sleep(1)
 
     basket = driver.find_element(By.XPATH, '/html/body/header/div[1]/div/div[2]').text
 
     button_basket = driver.find_element(By.CLASS_NAME, 'btn-group')
-
-    price1 = float(re.findall("\d+\.\d+", f'{price1}'.replace(',', '.'))[0])
-    price2 = float(re.findall("\d+\.\d+", f'{price2}'.replace(',', '.'))[0])
-
-    summ = str(price1 + price2).replace('.', ',')
 
     assert basket == f'Всего в корзине: {summ} £\nПосмотреть корзину'
 
